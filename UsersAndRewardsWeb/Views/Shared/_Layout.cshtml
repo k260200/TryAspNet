@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - UsersAndRewardsWeb</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/css/index.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1> Users and rewards </h1>
+    </header>
+    <main role="main" class="pb-3">
+        <nav>
+            <ul class="menu-list">
+                <li class="home-page">
+                    <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="privacy-page">
+                    <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </li>
+                <li class="users-page">
+                    <a asp-area="" asp-controller="Users" asp-action="Index">Users</a>
+                </li>
+                <li class="rewards-page">
+                    <a asp-area="" asp-controller="Rewards" asp-action="Index">Rewards</a>
+                </li>
+            </ul>
+        </nav>
+        <content class="main-content">
+            @RenderBody()
+        </content>
+        <advertisment>
+
+        </advertisment>
+    </main>
+
+    <footer>
+        &copy; 2021 - UsersAndRewardsWeb - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿@using UsersAndRewardsWeb
+@model IEnumerable<Entities.Reward>
+
+<h1>
+    Rewards
+</h1>
+
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Description</th>
+        <th></th>
+    </tr>
+    @foreach (var reward in Model)
+    {
+        <tr>
+            <td>
+                <form asp-action="EditRewardAndUsers" method="get">
+                    <input type="hidden" value="@reward.ID" , name="id" />
+                    <button class="edit-button" type="submit"> Edit </button>
+                </form>
+            </td>
+            <td> @reward.Title </td>
+            <td>  @reward.Description </td>
+            <td>
+                <form asp-action="DeleteReward">
+                    <input type="hidden" value="@reward.ID" , name="id" />
+                    <button class="delete-button" type="submit"> Delete </button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+
+
+<div>
+    <form asp-action="AddReward" method="get">
+        <button type="submit"> Add </button>
+    </form>
+</div>
+
+<style>
+    .rewards-page {
+        background-color: rgb(127, 214, 185)
+    }
+</style>

@@ -1,0 +1,36 @@
+﻿@using UsersAndRewardsWeb.Models.ViewEntities;
+@model AddUserViewModel
+
+<form asp-action="AddUser">
+    <div>
+        <input type="hidden" asp-for="@Model.UserView.ID">
+    </div>
+    <div>
+        <input type="text" asp-for="@Model.UserView.FirstName">
+        <span id="error-text" asp-validation-for="@Model.UserView.FirstName"></span>
+    </div>
+    <div>
+        <input type="text" asp-for="@Model.UserView.LastName">
+        <span id="error-text" asp-validation-for="@Model.UserView.LastName"></span>
+    </div>
+    <div>
+        <input type="date" asp-for="@Model.UserView.BirthDate">
+        <span id="error-text">@Html.ValidationMessageFor(m => m.UserView.BirthDate)</span>
+    </div>
+    <div>
+        <h5>Rewards:</h5>
+    </div>
+    <ul>
+        @for (int i = 0; i < Model.AllRewards.Count; i++)
+        {
+            <li>
+                <input type="checkbox" asp-for="@Model.AllRewards[i].Selected" />
+                <label asp-for="@Model.AllRewards[i].Selected">@Model.AllRewards[i].Text</label>
+                <input type="hidden" asp-for="@Model.AllRewards[i].Value" />
+                <input type="hidden" asp-for="@Model.AllRewards[i].Text" />
+            </li>
+        }
+    </ul>
+    <button asp-action="Index"> Cancel </button>
+    <button type="submit"> Ок </button>
+</form>
